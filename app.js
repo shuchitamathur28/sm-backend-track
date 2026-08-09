@@ -30,6 +30,19 @@ app.get('/tasks/:id',(req,res)=>{
     res.json(taskById);
 });
 
+app.post('/tasks', (req, res) => {
+  const { title } = req.body;
+  if (title === undefined || title === null || String(title).trim() === '') {
+    return res.status(400).json({ error: 'Task title is required and cannot be empty' });
+  }
+
+  const id = tasks.length === 0 ? 1 : Math.max(...tasks.map((t) => t.id)) + 1;
+  const task = { id, title: String(title).trim(), done: false };
+
+  tasks.push(task);
+  res.status(201).json(task);
+});
+
 app.listen(port,()=>{
     console.log("Server is listening at port ",port);
 });
