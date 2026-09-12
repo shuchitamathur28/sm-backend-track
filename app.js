@@ -2,6 +2,7 @@ const express = require('express');
 const res = require('express/lib/response');
 const swaggerUi = require('swagger-ui-express');
 const openapi = require('./openapi.json');
+const db = require('./database');
 const app = express();
 const port =3978;
 
@@ -22,16 +23,22 @@ const tasks = [
 ];
 
 app.get('/tasks',(req,res)=>{
+    const tasks = db.prepare('SELECT * FROM tasks').all();
     res.json(tasks);
 });
 
 app.get('/tasks/:id',(req,res)=>{
     const id= req.params.id;
-    if(!taskById || taskById == "undefined"){
-       return res.status(404).json({ error: 'Task ${id} not found' });
+    const task = db
+        .prepare('SELECT * FROM tasks WHERE id = ?')
+        .get(id);
+
+    if (!task) {
+        return res.status(404).json({
+            error: 'Task not found'
+        });
     }
-    const taskById = tasks.find((task) => task.id === id);
-    res.json(taskById);
+    res.json(task);
 });
 
 app.post('/tasks', (req, res) => {
