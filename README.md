@@ -12,3 +12,11 @@
 11. Install Swagger ui for api documentation and interaction
 12. Commit at each step
 13. Push to Github
+
+# Database Connection and Queries:
+SQLITE was chosen as it is easy to use and light weight database
+Database file is stored in root of the project as tasks.db
+To start the project, run this command in terminal: node app.js
+Screenshot 
+![alt text](image.png)
+Example Query: `Select * from tasks`
