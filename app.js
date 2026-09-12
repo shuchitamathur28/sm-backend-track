@@ -18,11 +18,11 @@ app.get('/health',(req,res)=>{
     return res.json({ "status": "ok" });
 });
 
-const tasks = [
-    {"id":"1", "title":"start learning backend", "done": true},
-    {"id":"2", "title":"learn backend", "done": false},
-    {"id":"3", "title": "complete assignment one", "done": false}
-];
+// const tasks = [
+//     {"id":"1", "title":"start learning backend", "done": true},
+//     {"id":"2", "title":"learn backend", "done": false},
+//     {"id":"3", "title": "complete assignment one", "done": false}
+// ];
 
 app.get('/tasks',(req,res)=>{
     const tasks = db.prepare('SELECT * FROM tasks').all();
