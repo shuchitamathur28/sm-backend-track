@@ -8,4 +8,4 @@ db.exec(`
     )
 `);
 
-console.log('Database and tasks table are ready.');
+console.log('Database and tasks table are ready.'); 
