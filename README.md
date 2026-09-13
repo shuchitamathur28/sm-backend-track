@@ -14,9 +14,9 @@
 13. Push to Github
 
 # Database Connection and Queries:
-SQLITE was chosen as it is easy to use and light weight database
-Database file is stored in root of the project as tasks.db
-To start the project, run this command in terminal: node app.js
-Screenshot 
+1. SQLITE was chosen as it is easy to use and light weight database
+2. Database file is stored in root of the project as tasks.db
+3. To start the project, run this command in terminal: node app.js
+4. Screenshot
 ![alt text](image.png)
-Example Query: `Select * from tasks`
+5. Example Query: `Select * from tasks`
